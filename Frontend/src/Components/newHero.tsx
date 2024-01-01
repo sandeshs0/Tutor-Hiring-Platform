@@ -11,7 +11,6 @@ interface NavigationItem {
 const HeroSection: React.FC = () => {
     const [state, setState] = useState<boolean>(false);
 
-    // Replace javascript:void(0) paths with your paths
     const navigation: NavigationItem[] = [
         { title: "Features", path: "javascript:void(0)" },
         { title: "Integrations", path: "javascript:void(0)" },

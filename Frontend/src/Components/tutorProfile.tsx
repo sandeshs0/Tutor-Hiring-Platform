@@ -35,7 +35,6 @@ const TutorDetailCard: React.FC<TutorDetailCardProps> = ({ fullName, username, b
 
     const handleSubmitBooking = async(event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        // Construct the payload
         const payload = {
             userId: id,
             studentName: formData.studentName,
@@ -50,9 +49,7 @@ const TutorDetailCard: React.FC<TutorDetailCardProps> = ({ fullName, username, b
         console.log('Booking form payload', payload);
         try {
           await submitBookingForm(payload);
-          // Optionally, you can perform additional actions after successful form submission
       } catch (error) {
-          // Handle error if submission fails
           console.error('Error submitting booking form:', error);
           toast.error("Something went wrong");
       }

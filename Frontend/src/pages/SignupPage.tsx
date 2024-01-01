@@ -18,7 +18,7 @@ interface tutorData {
         password: string,
 }
 
-const CreateFutsalForm: React.FC = () => {
+const SignupPageForm: React.FC = () => {
   const navigate = useNavigate();
   const [tutorData, settutorData] = useState<tutorData>({
     fullName: '',
@@ -234,7 +234,6 @@ const CreateFutsalForm: React.FC = () => {
                 </div>
             </div>
 
-            {/* Checkbox to show password */}
             <div className='flex items-center mt-4'>
                 <input
                     type="checkbox"
@@ -245,13 +244,11 @@ const CreateFutsalForm: React.FC = () => {
                 <label htmlFor="showPasswordCheckbox" className="text-lg font-medium text-gray-700 cursor-pointer">Show Password</label>
             </div>
 
-            {/* signin */}
             <form onSubmit={handleSubmit} >
                 <div className='mt-8 flex flex-col gap-y-4'>
                     <button type="submit" className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>Sign Up</button>
                 </div>
             </form>
-            {/*  account created */}
             <div className='mt-8 flex justify-center items-center'>
                 <p className='font-medium text-base'>Already Signed In?</p>
                 <Link to="/tutor-login" className='ml-2 font-medium text-base text-violet-500'>log in</Link>
@@ -262,4 +259,4 @@ const CreateFutsalForm: React.FC = () => {
   );
 };
 
-export default CreateFutsalForm;
+export default SignupPageForm;

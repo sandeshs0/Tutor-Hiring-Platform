@@ -24,19 +24,16 @@ const LoginPage: React.FC = () => {
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     console.log(credentials);
-    // Validation
     if (!credentials.email || !credentials.password) {
       toast.error('Fill in all fields');
       return;
     }
 
- // Submitting to server
  Login(credentials)
  .then((jwtTokenData) => {
    console.log('user logged in: ');
    console.log(jwtTokenData);
    
-   // Save the token in local storage
    localStorage.setItem('token', jwtTokenData.token);
    
    toast.success("Logged In Successfully.");
@@ -69,7 +66,6 @@ const LoginPage: React.FC = () => {
         
         <div className='mt-8'>
           
-              {/* email */}
               <div className='flex flex-col'>
                   <label className='text-lg font-medium'>Email</label>
                   <input 
@@ -81,7 +77,6 @@ const LoginPage: React.FC = () => {
                       className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
                       placeholder="Enter your email"/>
               </div>
-              {/* password */}
               <div className='flex flex-col mt-4'>
                   <label className='text-lg font-medium'>Password</label>
                   <input 
@@ -95,23 +90,13 @@ const LoginPage: React.FC = () => {
                       type="password"
                   />
               </div>
-              {/* remember and forgot 
-              <div className='mt-8 flex justify-between items-center'>
-                  <div>
-                      <input  type="checkbox" id='remember'/>
-                      <label className='ml-2 font-medium text-base' htmlFor="remember">Remember for 30 days</label>
-                  </div>
-                  <button className='font-medium text-base text-violet-500'>Forgot password</button>
-              </div> */}
-
-              {/* signin */}
+              
               <form onSubmit={handleSubmit} >
               <div className='mt-8 flex flex-col gap-y-4'>
                   <button  onSubmit={handleSubmit} type="submit" className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>Sign in</button>
                   
               </div>
               </form>
-              {/* no account */}
               <div className='mt-8 flex justify-center items-center'>
                   <p className='font-medium text-base'>Don't have an account?</p>
                  

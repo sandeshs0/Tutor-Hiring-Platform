@@ -1,7 +1,6 @@
 import { myAxios } from "./helper";
 
 export const getAllTutors = () => {
-    // updateTokenInHeaders();
 
     return myAxios.get('/user/sortByMonthlyFee')
       .then(response => response.data)
@@ -16,7 +15,6 @@ export const getAllTutors = () => {
             const response = await myAxios.get('/user/sortByYearsOfExp');
             let tutors = response.data;
     
-            // Sort tutors by experience in descending order
             tutors.sort((a: any, b: any) => b.yearsOfExp - a.yearsOfExp);
     
             return tutors;
@@ -39,7 +37,6 @@ export const sortTutorsByFee = async (): Promise<any[]> => {
         const response = await myAxios.get('/user/sortByMonthlyFee');
         let tutors = response.data;
 
-        // Sort tutors by fee in ascending order
         tutors.sort((a: any, b: any) => a.monthlyFee - b.monthlyFee);
 
         return tutors;

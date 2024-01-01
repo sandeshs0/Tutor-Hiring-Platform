@@ -20,6 +20,7 @@ const TutorDash: React.FC = () => {
   };
   const toggleProfileModal = () => {
     setShowProfileModal(!showProfileModal);
+    
   };
 
 
@@ -218,16 +219,31 @@ const TutorDash: React.FC = () => {
 
       </main>
 
-      {/* Profile Modal */}
       {showProfileModal && (
   <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
     <div className="bg-white p-8 rounded-md max-w-3xl">
       <h1 className="text-blue-950 font-extrabold text-center mb-6">My Profile</h1>
-      <img
+      <label htmlFor="profilePic" className="block relative w-max mx-auto cursor-pointer">
+        <img
           src={`data:image/jpeg;base64,${userData.profilePic}`}
           alt="Profile"
-          className="h-32 w-32 rounded-full mx-auto border-4 border-blue-400 mb-4"
+          className="h-32 w-32 rounded-full mx-auto border-4 border-blue-400 mb-4 cursor-pointer"
         />
+        <div className="absolute bottom-0 right-0 mr-1 mb-2">
+          <input
+            type="file"
+            id="profilePic"
+            name="profilePic"
+            accept="image/*"
+            className="hidden"
+            // onChange={handleProfilePicChange}
+          />
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="white" className="bi bi-camera-fill bg-blue-400 p-1 rounded-md" viewBox="0 0 16 16">
+  <path d="M10.5 8.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+  <path d="M2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4zm.5 2a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1m9 2.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0"/>
+</svg>
+        </div>
+      </label>
       <form className="grid grid-cols-2 gap-6">
       <div>
           <label className="block text-gray-700 font-bold mb-2">Full Name</label>
@@ -283,10 +299,9 @@ const TutorDash: React.FC = () => {
             onChange={(e) => setUserData({...userData, subject: e.target.value})}
           />
         </div>
-        {/* Add other user information fields here */}
         <div className="col-span-2 flex justify-center">
         <button
-  type="button" // Add this line to specify that it's not a submit button
+  type="button"
   className="bg-blue-500 text-white px-6 py-3 rounded-md"
   onClick={updateProfile}
 >
@@ -303,7 +318,6 @@ const TutorDash: React.FC = () => {
   </div>
 )}
 
-      {/* Confirm modal */}
       {showConfirmModal && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
           <div className="bg-white p-4 rounded-md">
@@ -327,7 +341,6 @@ const TutorDash: React.FC = () => {
         </div>
       )}
 
-      {/* Reject confirm modal */}
       {showRejectConfirmModal && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
           <div className="bg-white p-4 rounded-md">
@@ -351,7 +364,6 @@ const TutorDash: React.FC = () => {
         </div>
       )}
 
-      {/* Accepted bookings modal */}
       {showAcceptedBookingsModal && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-900 bg-opacity-50">
           <div className="bg-white p-8 rounded-md max-w-3xl">

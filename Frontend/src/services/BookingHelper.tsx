@@ -20,11 +20,8 @@ export const submitBookingForm = async (formData: BookingFormData): Promise<void
         console.log('Booking request submitted successfully:', response.data);
         toast.success("Booking Requested Successfully.")
         
-        
-        // You can handle success scenario here (e.g., show a success message)
-    } catch (error) {
+            } catch (error) {
         console.error('Error submitting booking request:', error);
         toast.error("Couldn't place booking")
-        // You can handle error scenario here (e.g., show an error message)
     }
 };

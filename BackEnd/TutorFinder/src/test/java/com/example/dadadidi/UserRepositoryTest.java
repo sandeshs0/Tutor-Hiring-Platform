@@ -36,22 +36,6 @@ public class UserRepositoryTest {
         Assertions.assertThat(savedUser.getId()).isNotNull();
     }
 
-//    @Test
-//    public void findByEmailTest() {
-//        User user = new User();
-//        user.setFullName("John Doe");
-//        user.setBio("Bio test");
-//        user.setUserName("johndoe");
-//        user.setAddress("123 Main St");
-//        user.setEmail("johndoe@example.com");
-//        userRepository.save(user);
-//
-//        Optional<User> foundUser = userRepository.getUserByEmail("johndoe@example.com");
-//
-//        Assertions.assertThat(foundUser).isNotNull();
-//        Assertions.assertThat(foundUser).isEqualTo("johndoe@example.com");
-//    }
-
     @Test
     public void findByIdTest() {
         User user = new User();
@@ -67,7 +51,6 @@ public class UserRepositoryTest {
         Assertions.assertThat(foundUserOptional).isPresent();
         Assertions.assertThat(foundUserOptional.get().getId()).isEqualTo(savedUser.getId());
     }
-
     @Test
     public void deleteByIdTest() {
         User user = new User();
@@ -83,27 +66,5 @@ public class UserRepositoryTest {
         Assertions.assertThat(userRepository.findById(savedUser.getId())).isEmpty();
     }
 
-//    @Test
-//    public void findAllTest() {
-//        User user1 = new User();
-//        user1.setFullName("John Doe");
-//        user1.setBio("Bio test");
-//        user1.setUserName("johndoe");
-//        user1.setAddress("123 Main St");
-//        user1.setEmail("johndoe@example.com");
-//        userRepository.save(user1);
-//
-//        User user2 = new User();
-//        user2.setFullName("Jane Doe");
-//        user2.setBio("Bio test");
-//        user2.setUserName("janedoe");
-//        user2.setAddress("456 Elm St");
-//        user2.setEmail("janedoe@example.com");
-//        userRepository.save(user2);
-//
-//        List<User> users = userRepository.findAll();
-//
-//        Assertions.assertThat(users.size()).isEqualTo(2);
-//    }
 
 }

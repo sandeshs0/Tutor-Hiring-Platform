@@ -5,7 +5,7 @@ import { getTutorById } from '../services/tutorCardService';
 
 const BookingPage: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const [tutor, setTutor] = useState<any>(null); // Adjust the type if needed
+  const [tutor, setTutor] = useState<any>(null);
 
   useEffect(() => {
     console.log("Id:"+id);

@@ -7,7 +7,7 @@ import { getTutorById } from '../services/tutorCardService';
 
 const TutorDetailPage: React.FC = () => {
   const { id } = useParams<{ id: string }>(); 
-  const [tutor, setTutor] = useState<any>(null); // Adjust the type if needed
+  const [tutor, setTutor] = useState<any>(null);
 
   useEffect(() => {
     const fetchTutorDetails = async () => {

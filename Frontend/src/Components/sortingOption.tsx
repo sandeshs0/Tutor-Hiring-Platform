@@ -1,4 +1,3 @@
-// SortingOptions.tsx
 import React from 'react';
 
 interface SortingOptionsProps {

@@ -20,23 +20,17 @@ function App() {
           <Route path="/login" element={<Form />} />
           <Route path="" element={<Home />} />
           <Route path="/tutor-login" element={<LoginPage />} />
-          {/* <Route path="/login" element={<LoginPage />} /> */}
-          {/* <Route path="/signup" element={<RegisterPage />} />  */}
           <Route path="/register" element={<SignupPageForm />} />
           <Route path="/tutorDash" element={<TutorDash />} />
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/trysignup" element={<CreateFutsalForm />} />
 
-          {/* <Route path="/tutorDetail" element={<TutorDetails />} /> */}
 
           <Route path="/tutorDetail/:id" element={<TutorDetails />} />
           <Route path="/booking-form/:userId" element={<BookingPage/>} />
 
 
      
-          {/* <Route path="/booking-form/:userId" element={<BookingForm/>} /> */}
-
-          {/* <Route path="/test" element={<ExampleV3/>} /> */}
         </Routes>
         
       </div>

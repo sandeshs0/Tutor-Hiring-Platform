@@ -87,7 +87,6 @@ const SignupPage: React.FC = () => {
                 <h1 className='text-5xl font-semibold'>Tutor Registration</h1>
                 <p className='font-medium text-lg text-gray-500 mt-4'>Hello! Let's start your tutoring journey here!</p>
                 <form onSubmit={handleSubmit} className='grid grid-cols-2 gap-6 mt-8'>
-                    {/* Left Side */}
                     <div className='col-span-1'>
                         <div className='flex flex-col'>
                             <label className='text-lg font-medium' htmlFor="fullName">Full Name</label>
@@ -149,7 +148,6 @@ const SignupPage: React.FC = () => {
                             />
                         </div>
                     </div>
-                    {/* Right Side */}
                     <div className='col-span-1'>
                         <div className='flex flex-col'>
                             <label className='text-lg font-medium' htmlFor="bio">About Yourself</label>
@@ -201,7 +199,6 @@ const SignupPage: React.FC = () => {
                             />
                         </div>
                     </div>
-                    {/* Common for Both Sides */}
                     <div className='col-span-2'>
                         <div className='flex flex-col'>
                             <label className='text-lg font-medium' htmlFor="email">Email</label>
@@ -243,7 +240,6 @@ const SignupPage: React.FC = () => {
                         </div>
                     </div>
                     <div className='col-span-2'>
-                        {/* Checkbox to show password */}
                         <div className='flex items-center mt-4'>
                             <input
                                 type="checkbox"
@@ -254,12 +250,10 @@ const SignupPage: React.FC = () => {
                             <label htmlFor="showPasswordCheckbox" className="text-lg font-medium text-gray-700 cursor-pointer">Show Password</label>
                         </div>
 
-                        {/* submit */}
                         <div className='mt-8 flex flex-col gap-y-4'>
                             <button type="submit" className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01]  ease-in-out transform py-4 bg-violet-500 rounded-xl text-white font-bold text-lg'>Sign Up</button>
                         </div>
 
-                        {/* Already have an account */}
                         <div className='mt-8 flex justify-center items-center'>
                             <p className='font-medium text-base'>Already Signed In?</p>
                             <Link to="/tutor-login" className='ml-2 font-medium text-base text-violet-500'>log in</Link>
