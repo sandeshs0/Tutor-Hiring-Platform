@@ -12,7 +12,7 @@ function App() {
       <div>
         <Routes>
           <Route path="/login" element={<Form />} />
-          <Route path="/logintest" element={<LoginPage />} />
+          <Route path="/login-new" element={<LoginPage />} />
           {/* <Route path="/login" element={<LoginPage />} /> */}
          
           <Route path="/register" element={<RegisterPage />} /> 
