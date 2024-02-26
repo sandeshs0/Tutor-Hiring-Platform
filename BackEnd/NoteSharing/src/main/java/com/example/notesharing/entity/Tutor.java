@@ -35,6 +35,9 @@ public class Tutor {
     @Column(name = "yearsOfExp", nullable = false)
     private Double yearsOfExp;
 
+    @Column(name = "bio")
+    private String bio; // Biography of the tutor
+
     @ElementCollection
     @CollectionTable(name = "tutor_subjects", joinColumns = @JoinColumn(name = "tutor_id"))
     @Column(name = "subject")

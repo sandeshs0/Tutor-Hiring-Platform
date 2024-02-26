@@ -36,6 +36,9 @@ public class TutorPojo {
     @NotNull(message = "Years of experience is required")
     private Double yearsOfExp;
 
+    @NotNull(message = "BIO required")
+    private String bio;
+
     @NotEmpty(message = "At least one subject must be provided")
     private Set<String> subjects = new HashSet<>();
 
