@@ -34,6 +34,9 @@ public class UserPojo {
     @NotNull(message = "Phone number is required")
     private String phone;
 
-    @NotNull
+    @NotNull(message = "password cannot be empty")
     private String password;
+
+    @NotNull
+    private boolean is_tutor;
 }

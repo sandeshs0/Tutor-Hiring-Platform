@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.stream.Collectors;
 import lombok.Getter;
 import lombok.Setter;
+
 @Setter
 @Getter
 @Entity
@@ -36,6 +37,15 @@ public class User implements UserDetails {
 
     @Column(name="password", nullable = false)
     private String password;
+
+    @Column(name="address", nullable = false)
+    private String address;
+
+    @Column(name="bio")
+    private String bio;
+
+    @Column(name = "is_tutor", nullable = false)
+    private boolean is_tutor;
 
 
     @ManyToMany(fetch = FetchType.EAGER)
