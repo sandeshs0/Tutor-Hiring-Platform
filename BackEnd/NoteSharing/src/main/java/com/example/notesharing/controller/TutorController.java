@@ -16,7 +16,6 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TutorController {
     private final TutorService tutorService;
-
     @PostMapping("/save")
     public String saveTutor(@Valid @RequestBody TutorPojo tutorPojo) {
         tutorService.saveTutor(tutorPojo);

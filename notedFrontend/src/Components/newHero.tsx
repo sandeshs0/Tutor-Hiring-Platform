@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+// import { Link, Router } from 'react-router-dom';
+import { Link, BrowserRouter as Router } from 'react-router-dom'; // Import BrowserRouter and Route
+
 
 interface NavigationItem {
     title: string;
@@ -51,6 +54,7 @@ const HeroSection: React.FC = () => {
     );
 
     return (
+        <Router>
         <div className='relative'>
             <div className='absolute inset-0 blur-xl h-[580px]' style={{ background: "linear-gradient(143.6deg, rgba(192, 132, 252, 0) 20.79%, rgba(232, 121, 249, 0.26) 40.92%, rgba(204, 171, 238, 0) 70.35%)" }}></div>
             <div className='relative'>
@@ -94,12 +98,12 @@ const HeroSection: React.FC = () => {
                                 A wide range of young and energetic tutors you can count on.
                             </p>
                             <div className='flex items-center gap-x-3 sm:text-xl'>
-                                <a href="javascript:void(0)" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-blue-800 duration-150 hover:bg-blue-700 active:bg-gray-900 rounded-full md:inline-flex">
+                                <Link to="/sorting-component" className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-blue-800 duration-150 hover:bg-blue-700 active:bg-gray-900 rounded-full md:inline-flex">
                                     Get started
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
                                         <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
                                     </svg>
-                                </a>
+                                </Link>
                 
                             </div>
                         </div>
@@ -111,6 +115,9 @@ const HeroSection: React.FC = () => {
                 </section>
             </div>
         </div>
+        {/* <Route path="/sorting-component" Component={SortingOptions} /> */}
+
+        </Router>
     );
 };
 

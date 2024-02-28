@@ -1,5 +1,4 @@
 import React from 'react';
-
 const TutorDash: React.FC = () => {
   return (
     <body className="bg-gray-100">
@@ -259,5 +258,6 @@ const TutorDash: React.FC = () => {
     </body>
   );
 };
+
 
 export default TutorDash;

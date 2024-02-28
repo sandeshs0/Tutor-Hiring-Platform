@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 @Getter
 @Setter
@@ -36,7 +37,7 @@ public class UserPojo {
     private String bio;
 
     @NotNull(message = "Profile picture URL is required")
-    private String profilePic;
+    private MultipartFile profilePic;
 
     @NotNull(message = "Monthly fee is required")
     private Double monthlyFee;

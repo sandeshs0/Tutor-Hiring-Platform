@@ -15,8 +15,10 @@ public interface UserRepository extends JpaRepository<User,Integer> {
 
     List<User> findAllByOrderByMonthlyFee();
 
+    Optional<User> findById(Integer userId);
+
     List<User> findAllByOrderByYearsOfExp();
 
-    List<User> findAllByOrderBySubject();
 
+    List<User> findAllBySubject(String subject);
 }

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { Login } from '../services/user-service';
+import { Login, getTutorByEmail } from '../services/user-service';
 
 const LoginPage: React.FC = () => {
   const [credentials, setCredentials] = useState({
@@ -32,7 +33,8 @@ const LoginPage: React.FC = () => {
         console.log('user logged in: ');
         console.log(jwtTokenData);
         toast.success("Logged In Successfully.");
-        window.location.href = '/tutor';
+        window.location.href = '/tutorDash';
+        console.log(getTutorByEmail());
 
 
       })
@@ -107,9 +109,10 @@ const LoginPage: React.FC = () => {
               {/* no account */}
               <div className='mt-8 flex justify-center items-center'>
                   <p className='font-medium text-base'>Don't have an account?</p>
-                  <button 
-                      
-                      className='ml-2 font-medium text-base text-violet-500'>Sign up</button>
+                 
+                 <Link to="/register">
+                  <button className='ml-2 font-medium text-base text-violet-500'>Sign up</button>
+                  </Link>
               </div>
            
         </div>

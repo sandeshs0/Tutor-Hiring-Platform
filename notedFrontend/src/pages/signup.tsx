@@ -55,7 +55,7 @@ const RegisterPage: React.FC = () => {
           console.log(resp);
           toast.success("User Registered Successfully");
           // Redirect to login page after successful registration
-          window.location.href = '/login'; // This line redirects the user to the login page
+          window.location.href = '/tutor-login'; // This line redirects the user to the login page
       } catch (error) {
           console.error(error);
           toast.error("Couldn't register: "+error);
@@ -169,11 +169,10 @@ const RegisterPage: React.FC = () => {
                     <div className='flex flex-col'>
                         <label className='text-lg font-medium' htmlFor="profilePic">Profile Pic</label>
                         <input
-                            type="text"
+                            type="file"
                             id="profilePic"
                             name="profilePic"
-                            value={formData.profilePic}
-                            onChange={handleChange}
+                            onChange={handleChange} 
                             className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
                             placeholder="profile pic" />
                     </div>
@@ -263,7 +262,7 @@ const RegisterPage: React.FC = () => {
                     {/*  account created */}
                     <div className='mt-8 flex justify-center items-center'>
                         <p className='font-medium text-base'>Already Signed In?</p>
-                        <Link to="/login" className='ml-2 font-medium text-base text-violet-500'>log in</Link>
+                        <Link to="/tutor-login" className='ml-2 font-medium text-base text-violet-500'>log in</Link>
                     </div>
                 </div>
             </div>
