@@ -32,4 +32,21 @@ public class UserController {
 
     @DeleteMapping("/deleteById/{id}")
     public  void deleteById(@PathVariable("id") Integer id){userService.deleteById(id);}
+
+    @GetMapping("/sortByMonthlyFee")
+    public List<User> sortByMonthlyFee() {
+        return userService.getAllUsersSortedByMonthlyFee();
+    }
+
+    @GetMapping("/sortByYearsOfExp")
+    public List<User> sortByYearsOfExp() {
+        return userService.getAllUsersSortedByYearsOfExp();
+    }
+
+    @GetMapping("/sortBySubject")
+    public List<User> sortBySubject() {
+        return userService.getAllUsersSortedBySubject();
+    }
+
+
 }

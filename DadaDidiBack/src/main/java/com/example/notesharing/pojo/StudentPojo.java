@@ -32,4 +32,7 @@ public class StudentPojo {
 
     @NotNull(message = "Bio is required")
     private String bio;
+
+    @NotNull(message = "UserId is required")
+    private Integer userId;
 }

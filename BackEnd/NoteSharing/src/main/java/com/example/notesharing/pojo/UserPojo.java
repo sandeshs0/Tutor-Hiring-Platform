@@ -1,15 +1,10 @@
 package com.example.notesharing.pojo;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.NotEmpty;
-
 
 @Getter
 @Setter
@@ -19,11 +14,11 @@ public class UserPojo {
 
     private Integer id;
 
-    @NotNull(message = "First Name is required")
-    private String firstName;
+    @NotNull(message = "Full name is required")
+    private String fullName;
 
-    @NotNull(message = "Last Name is required")
-    private String lastName;
+    @NotNull(message = "Subject is required")
+    private String subject;
 
     @NotNull(message = "Username is required")
     private String userName;
@@ -34,9 +29,21 @@ public class UserPojo {
     @NotNull(message = "Phone number is required")
     private String phone;
 
-    @NotNull(message = "password cannot be empty")
-    private String password;
+    @NotNull(message = "Address is required")
+    private String address;
 
-    @NotNull
-    private boolean is_tutor;
+    @NotNull(message = "Bio is required")
+    private String bio;
+
+    @NotNull(message = "Profile picture URL is required")
+    private String profilePic;
+
+    @NotNull(message = "Monthly fee is required")
+    private Double monthlyFee;
+
+    @NotNull(message = "Years of experience is required")
+    private Double yearsOfExp;
+
+    @NotNull(message = "Password is required")
+    private String password;
 }

@@ -36,7 +36,7 @@ public class Tutor {
     private Double yearsOfExp;
 
     @Column(name = "bio")
-    private String bio; // Biography of the tutor
+    private String bio;
 
     @ElementCollection
     @CollectionTable(name = "tutor_subjects", joinColumns = @JoinColumn(name = "tutor_id"))
@@ -46,6 +46,4 @@ public class Tutor {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
-
-    // Other fields specific to tutor profile, if any
 }

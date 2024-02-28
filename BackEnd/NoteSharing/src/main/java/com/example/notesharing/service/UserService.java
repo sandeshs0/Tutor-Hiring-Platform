@@ -15,4 +15,8 @@ public interface UserService {
 
     void deleteById(Integer id);
 
+    List<User> getAllUsersSortedByMonthlyFee();
+    List<User> getAllUsersSortedByYearsOfExp();
+    List<User> getAllUsersSortedBySubject();
+
 }

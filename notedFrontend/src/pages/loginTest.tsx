@@ -31,6 +31,9 @@ const LoginPage: React.FC = () => {
       .then((jwtTokenData) => {
         console.log('user logged in: ');
         console.log(jwtTokenData);
+        toast.success("Logged In Successfully.");
+        window.location.href = '/tutor';
+
 
       })
       .catch((error) => {
@@ -85,14 +88,14 @@ const LoginPage: React.FC = () => {
                       type="password"
                   />
               </div>
-              {/* remember and forgot  */}
+              {/* remember and forgot 
               <div className='mt-8 flex justify-between items-center'>
                   <div>
                       <input  type="checkbox" id='remember'/>
                       <label className='ml-2 font-medium text-base' htmlFor="remember">Remember for 30 days</label>
                   </div>
                   <button className='font-medium text-base text-violet-500'>Forgot password</button>
-              </div>
+              </div> */}
 
               {/* signin */}
               <form onSubmit={handleSubmit} >

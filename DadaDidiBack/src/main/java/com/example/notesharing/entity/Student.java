@@ -34,8 +34,8 @@ public class Student {
     @Column(name = "bio", nullable = false)
     private String bio;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
     private User user;
 
 }

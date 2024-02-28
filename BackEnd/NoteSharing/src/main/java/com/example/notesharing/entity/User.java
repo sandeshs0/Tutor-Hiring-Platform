@@ -20,11 +20,11 @@ public class User implements UserDetails {
     @GeneratedValue(generator="user_seq_gen", strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name="first_name", nullable = false, length = 255)
-    private String firstName;
+    @Column(name="full_name", nullable = false, length = 255)
+    private String fullName;
 
-    @Column(name="last_name", nullable = false, length = 255)
-    private String lastName;
+    @Column(name="subject", nullable = false, length = 255)
+    private String subject;
 
     @Column(name="user_name", nullable = false, unique = true)
     private String userName;
@@ -35,15 +35,23 @@ public class User implements UserDetails {
     @Column(name="phone", nullable = false, unique = true)
     private String phone;
 
-    @Column(name="password", nullable = false)
-    private String password;
-
-    @Column(name="address", nullable = false)
+    @Column(name="address", nullable = false, length = 255)
     private String address;
 
-    @Column(name = "is_tutor", nullable = false)
-    private boolean is_tutor;
+    @Column(name="bio", nullable = false, length = 255)
+    private String bio;
 
+    @Column(name = "profilePic", nullable = false)
+    private String profilePic;
+
+    @Column(name = "monthlyFee", nullable = false)
+    private Double monthlyFee;
+
+    @Column(name = "yearsOfExp", nullable = false)
+    private Double yearsOfExp;
+
+    @Column(name="password", nullable = false)
+    private String password;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
