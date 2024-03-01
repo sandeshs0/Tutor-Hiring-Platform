@@ -18,19 +18,16 @@ public class BookingController {
 
     @Autowired
     private BookingService bookingService;
-
     @PostMapping("/request")
     public ResponseEntity<Booking> requestBooking(@RequestBody BookingPojo bookingPojo) {
         Booking booking = bookingService.requestBooking(bookingPojo);
         return new ResponseEntity<>(booking, HttpStatus.CREATED);
     }
-
     @GetMapping("/my-bookings")
     public ResponseEntity<List<Booking>> getBookingsForLoggedInUser() {
         List<Booking> bookings = bookingService.getBookingsForLoggedInUser();
         return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
-
     @PutMapping("/{bookingId}/accept")
 //    @PreAuthorize("hasRole('TUTOR')") // Ensure only tutors can access this endpoint
     public ResponseEntity<String> acceptBooking(@PathVariable Integer bookingId) {

@@ -1,22 +1,35 @@
 import { jwtDecode } from 'jwt-decode';
 import { myAxios } from "./helper";
 
-// Function to fetch the token from local storage
+
 const getTokenFromLocalStorage = () => {
   return localStorage.getItem('token');
 };
 
-export const Register = (user:any)=>{
-    return myAxios
-    .post('/user/save', user)
-    .then((response)=> response.data)
+
+
+export const Register = (userData: any) => { 
+  const formData = new FormData();
+
+
+  Object.keys(userData).forEach(key => {
+      formData.append(key, userData[key]);
+  });
+
+  return myAxios
+      .post('/user/save', formData, {
+          headers: {
+              'Content-Type': 'multipart/form-data' 
+          }
+      })
+      .then(response => response.data)
+      .catch(error => {
+          console.error("Error registering user:", error);
+          throw error;
+      });
 };
 
-// export const Login = (credentials) => {
-//     return myAxios
-//     .post('/user/login',  credentials)
-//     .then((response)=>response.data)
-// }
+
 
 export const Login = (credentials: { email: string; password: string; }) => {
   return myAxios
@@ -56,9 +69,7 @@ export const getBookingsOfLoggedInUser = async () => {
       if (!token) {
           throw new Error('Token not found in local storage');
       }
-      // Set the Authorization header with the token
       myAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // Fetch bookings of logged-in user
       const response = await myAxios.get('bookings/my-bookings');
       return response.data;
   } catch (error) {
@@ -72,9 +83,7 @@ export const acceptBooking = async (bookingId: number) => {
     if (!token) {
       throw new Error('Token not found in local storage');
     }
-    // Set the Authorization header with the token
     myAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // Send a PUT request to accept the booking with the provided ID
     await myAxios.put(`bookings/${bookingId}/accept`);
   } catch (error) {
     throw error;
@@ -87,9 +96,7 @@ export const rejectBooking = async (bookingId: number) => {
     if (!token) {
       throw new Error('Token not found in local storage');
     }
-    // Set the Authorization header with the token
     myAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // Send a PUT request to accept the booking with the provided ID
     await myAxios.delete(`bookings/${bookingId}`);
   } catch (error) {
     throw error;
@@ -102,9 +109,7 @@ export const updateTutor = async (email: any, userData: any) => {
     if (!token) {
       throw new Error('Token not found in local storage');
     }
-    // Set the Authorization header with the token
     myAxios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-    // Send a PUT request to update the tutor information
     const response = await myAxios.put(`${BASE_URL}/user/updateTutor/${email}`, userData);
     return response.data;
   } catch (error) {

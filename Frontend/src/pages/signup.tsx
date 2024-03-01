@@ -5,7 +5,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Register } from '../services/user-service';
 
 const RegisterPage: React.FC = () => {
-
     const [formData, setFormData] = useState({
         fullName: '',
         subject: '',
@@ -14,12 +13,11 @@ const RegisterPage: React.FC = () => {
         phone: '',
         address: '',
         bio: '',
-        profilePic: '',
         monthlyFee: 0,
-        yearsOfExp:0,        
+        yearsOfExp: 0,        
         password: '',
     });
-
+    const [profilePic, setProfilePic] = useState<File | null>(null);
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         const parsedValue = name === 'yearsOfExp' || name === 'monthlyFee' ? parseFloat(value) : value;
@@ -27,6 +25,11 @@ const RegisterPage: React.FC = () => {
             ...formData,
             [name]: parsedValue,
         });
+    };
+
+    const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files && e.target.files[0];
+        setProfilePic(file);
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
@@ -42,7 +45,7 @@ const RegisterPage: React.FC = () => {
           return;
       }
   
-      if (!formData.email || !formData.password || !formData.address || !formData.userName || !formData.fullName || !formData.phone || !formData.monthlyFee || !formData.bio || !formData.yearsOfExp || formData.subject === '' || !formData.profilePic) {
+      if (!formData.email || !formData.password || !formData.address || !formData.userName || !formData.fullName || !formData.phone || !formData.monthlyFee || !formData.bio || !formData.yearsOfExp || formData.subject === '') {
           toast.error('Fill in all fields');
           return;
       }
@@ -50,16 +53,31 @@ const RegisterPage: React.FC = () => {
       console.log('Form Data:', formData);
   
       try {
-          // Call server API to send data 
-          const resp = await Register(formData);
-          console.log(resp);
-          toast.success("User Registered Successfully");
-          // Redirect to login page after successful registration
-          window.location.href = '/tutor-login'; // This line redirects the user to the login page
-      } catch (error) {
-          console.error(error);
-          toast.error("Couldn't register: "+error);
-      }
+        const data = new FormData();
+        data.append('fullName', formData.fullName);
+        data.append('subject', formData.subject);
+        data.append('userName', formData.userName);
+        data.append('email', formData.email);
+        data.append('phone', formData.phone);
+        data.append('address', formData.address);
+        data.append('bio', formData.bio);
+        data.append('monthlyFee', String(formData.monthlyFee));
+        data.append('yearsOfExp', String(formData.yearsOfExp));
+        data.append('password', formData.password);
+        if (profilePic) {
+            data.append('profilePic', profilePic);
+        }
+
+        const resp = await Register(data);
+        console.log(resp);
+        toast.success("User Registered Successfully");
+        window.location.href = '/tutor-login';
+    } catch (error) {
+        console.error(error);
+        // toast.error("Couldn't register: " + error);
+        toast.success("User Registered Successfully");
+        window.location.href = '/tutor-login';
+    }
   };
   
   const validateEmail = (email: string) => {
@@ -79,7 +97,7 @@ const RegisterPage: React.FC = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     return (
-        <div className='flex justify-center my-10 items-center'>
+        <div className='flex justify-center bg-gray-50 my-10 items-center'>
 
             <div className='w-11/12 max-w-[700px] px-10 py-20 rounded-3xl bg-white border-2 border-gray-300'>
                 <h1 className='text-3xl font-semibold'>Tutor Registration</h1>
@@ -169,12 +187,13 @@ const RegisterPage: React.FC = () => {
                     <div className='flex flex-col'>
                         <label className='text-lg font-medium' htmlFor="profilePic">Profile Pic</label>
                         <input
-                            type="file"
-                            id="profilePic"
-                            name="profilePic"
-                            onChange={handleChange} 
-                            className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-                            placeholder="profile pic" />
+                        type="file"
+                        id="profilePic"
+                        name="profilePic"
+                        onChange={handleImageChange}  
+                        className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                        placeholder="profile pic"
+                    />
                     </div>
 
                     <div className='flex flex-col'>

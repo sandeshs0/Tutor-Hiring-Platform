@@ -1,10 +1,7 @@
 package com.example.dadadidi.entity;
-
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 @Entity
 @Table(name = "bookings")
 @Getter
@@ -17,8 +14,6 @@ public class Booking {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-
 
     @Column(name = "accepted", nullable = false)
     private boolean accepted = false;
@@ -43,7 +38,6 @@ public class Booking {
 
     @Column(name = "student_email",nullable=false)
     private String studentEmail;
-
 
     @Column(name = "offeredFee",nullable=false)
     private Integer offeredFee;

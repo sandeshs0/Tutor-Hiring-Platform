@@ -13,7 +13,8 @@ const SortingOptions: React.FC<SortingOptionsProps> = ({ onSelectSortBy, onSelec
     };
 
  const handleSubjectSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        onSelectSubject(e.target.value); // Call onSelectSubject with the selected subject
+    console.log("filter fn called"+e.target.value);   
+    onSelectSubject(e.target.value); // Call onSelectSubject with the selected subject
     };
 
     return (
@@ -29,7 +30,7 @@ const SortingOptions: React.FC<SortingOptionsProps> = ({ onSelectSortBy, onSelec
                 <option value="">Filter by Subject</option>
                 <option value="Programming">Programming</option>
                 <option value="Computer Science">Computer Science</option>
-                <option value="Maths">Maths</option>
+                <option value="Mathematics">Mathematics</option>
                 <option value="English">English</option>
                 <option value="Finance">Finance</option>
             </select>

@@ -14,16 +14,22 @@ const Home: React.FC = () => {
 
     useEffect(() => {
         fetchTutors();
+        console.log("Selected Subject:", selectedSubject); // Log the selected subject
     }, [sortBy, selectedSubject]);
-
+    
     const fetchTutors = async () => {
         try {
             let tutorsData;
             if (sortBy === 'experience') {
+                console.log("else if ma gayo exp ko ")
+
                 tutorsData = await sortTutorsByExperience();
             } else if (sortBy === 'fee') {
+                console.log("else if ma gayo fee ko")
+
                 tutorsData = await getAllTutors();
             } else if (selectedSubject) {
+                console.log("else if ma gayo filterby sub ko"+selectedSubject);
                 tutorsData = await filterTutorsBySubject(selectedSubject);
             } else {
                 tutorsData = await getAllTutors();

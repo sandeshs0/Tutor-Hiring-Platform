@@ -27,7 +27,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public Booking requestBooking(BookingPojo bookingPojo) {
-        // Create a new booking entity
         Booking booking = new Booking();
         booking.setStudent_name(bookingPojo.getStudentName());
         booking.setTime(bookingPojo.getTime());
@@ -37,10 +36,6 @@ public class BookingServiceImpl implements BookingService {
         booking.setLocation(bookingPojo.getLocation());
         booking.setStudentEmail(bookingPojo.getStudentEmail());
         booking.setOfferedFee(bookingPojo.getOfferedFee());
-
-        // Set the user ID from the request, assuming it's provided in the BookingPojo
-        // You might need to adjust this part based on how the user ID is passed in the request
-        // For simplicity, let's assume it's provided directly in the BookingPojo
         User user = new User();
         user.setId(bookingPojo.getUserId());
         Role tutorRole = new Role();
