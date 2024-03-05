@@ -44,19 +44,15 @@ class BookingServiceImplTest {
     @Test
     void requestBooking() {
         BookingPojo bookingPojo = new BookingPojo();
-        // Set up bookingPojo with necessary data
 
-        // Mock user
         User user = new User();
-        user.setId(1); // Set user ID
+        user.setId(1);
         Role tutorRole = new Role();
         tutorRole.setName("tutor");
 
-        // Create a collection to hold the roles
         Collection<Role> roles = new ArrayList<>();
         roles.add(tutorRole);
 
-        // Set the roles for the user
         user.setRoles(roles);
 
         when(userService.getByEmail(anyString())).thenReturn(Optional.of(user));
@@ -65,16 +61,13 @@ class BookingServiceImplTest {
         Booking savedBooking = bookingService.requestBooking(bookingPojo);
 
         assertNotNull(savedBooking);
-        // Add more assertions as needed
     }
 
     @Test
     void getBookingsForLoggedInUser() {
-        // Mock authentication
         Authentication authentication = new UsernamePasswordAuthenticationToken("tutor@example.com", "password");
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Mock user
         User user = new User();
         user.setEmail("tutor@example.com");
 
@@ -85,22 +78,18 @@ class BookingServiceImplTest {
 
         assertNotNull(bookings);
         assertEquals(0, bookings.size());
-        // Add more assertions as needed
     }
 
     @Test
     void acceptBooking() {
-        // Mock authentication
         Authentication authentication = new UsernamePasswordAuthenticationToken("tutor@example.com", "password");
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Mock user
         User user = new User();
         user.setEmail("tutor@example.com");
 
-        // Mock booking
         Booking booking = new Booking();
-        booking.setId(1); // Set booking ID
+        booking.setId(1);
 
         when(userService.getByEmail(anyString())).thenReturn(Optional.of(user));
         when(bookingRepository.findByIdAndUser(anyInt(), any())).thenReturn(Optional.of(booking));
@@ -108,30 +97,24 @@ class BookingServiceImplTest {
         bookingService.acceptBooking(1);
 
         assertTrue(booking.isAccepted());
-        // Add more assertions as needed
     }
 
     @Test
     void deleteBooking() {
-        // Mock authentication
         Authentication authentication = new UsernamePasswordAuthenticationToken("tutor@example.com", "password");
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Mock user
         User user = new User();
         user.setEmail("tutor@example.com");
 
-        // Mock booking
         Booking booking = new Booking();
-        booking.setId(1); // Set booking ID
+        booking.setId(1);
 
         when(userService.getByEmail(anyString())).thenReturn(Optional.of(user));
         when(bookingRepository.findByIdAndUser(anyInt(), any())).thenReturn(Optional.of(booking));
 
         bookingService.deleteBooking(1);
 
-        // Verify that delete method is called with the correct booking
         verify(bookingRepository, times(1)).delete(booking);
-        // Add more assertions as needed
     }
 }

@@ -65,8 +65,13 @@ const RegisterPage: React.FC = () => {
         data.append('yearsOfExp', String(formData.yearsOfExp));
         data.append('password', formData.password);
         if (profilePic) {
+            console.log("yo if bhitra ko: ");
+            console.log(profilePic);
             data.append('profilePic', profilePic);
         }
+        console.log("yo register service ma pathako: ");
+        console.log(formData);
+        console.log(data);
 
         const resp = await Register(data);
         console.log(resp);
@@ -74,9 +79,9 @@ const RegisterPage: React.FC = () => {
         window.location.href = '/tutor-login';
     } catch (error) {
         console.error(error);
-        // toast.error("Couldn't register: " + error);
-        toast.success("User Registered Successfully");
-        window.location.href = '/tutor-login';
+        toast.error("Couldn't register: " + error);
+        // toast.success("User Registered Successfully");
+        // window.location.href = '/tutor-login';
     }
   };
   
@@ -133,7 +138,7 @@ const RegisterPage: React.FC = () => {
                       id="subject"
                       name="subject"
                       value={formData.subject}
-                      onChange={handleChange}
+                     onChange={handleChange}
                       className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
                   >
                       <option value="">Select a subject</option>

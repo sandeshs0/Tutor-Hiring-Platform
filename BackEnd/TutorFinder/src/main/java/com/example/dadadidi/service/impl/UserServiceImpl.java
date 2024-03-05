@@ -86,44 +86,6 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
-
-//    @Override
-//    public User updatedUser(Integer id, User updatedUser, MultipartFile imageFile) {
-//        System.out.println(id);
-//        Optional<User> optionalUser = userRepository.findById(id);
-
-//        // Check if the optional contains a value
-//        if (optionalUser.isPresent()) {
-//            User user = optionalUser.get(); // Extract the Futsal object from Optional
-//
-//            System.out.println("futsal name is" + user.getFullName());
-//
-//            user.setFullName(updatedUser.getFullName());
-//            user.setAddress(updatedUser.getAddress());
-//            user.setMonthlyFee(updatedUser.getMonthlyFee());
-//            user.setYearsOfExp(updatedUser.getYearsOfExp());
-//            user.setBio(updatedUser.getBio());
-//
-//
-//            System.out.println("in impl" + updatedFutsal.getName());
-//            System.out.println("in impl" + updatedFutsal.getPrice());
-//
-//            // Check if a new image file is provided
-//            if (imageFile != null && !imageFile.isEmpty()) {
-//                // Save the new image file
-//                String filename = saveImage(imageFile);
-//                // Set the new image filename to the futsal
-//                futsal.setImage(filename);
-//                System.out.println("new file name set in impl:" + filename);
-//            }
-//
-//            return futsalRepository.save(futsal);
-//        } else {
-//            // Handle the case where Futsal with given id is not found
-//            throw new EntityNotFoundException("Futsal not found with id: " + id);
-//        }
-//
-//    }
     @Override
     public List<User> getAllData() {
         List<User> users = userRepository.findAll();
@@ -164,7 +126,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Optional<User> getByEmail(String email) {
-        return userRepository.getUserByEmail(email); // Implement findByEmail in UserRepository
+        return userRepository.getUserByEmail(email);
     }
 
     @Override
@@ -183,7 +145,6 @@ public class UserServiceImpl implements UserService {
         String imagePath = "/Images/" + user.getProfilePic();
         String base64Image = imageToBase64.getImageBase64(imagePath);
 
-        // Set the base64 image in the futsal object
         user.setProfilePic(base64Image);
 
         return user;

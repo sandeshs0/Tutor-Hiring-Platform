@@ -117,7 +117,7 @@ const TutorDash: React.FC = () => {
               <img
                 src={`data:image/jpeg;base64,${userData.profilePic}`}
                 alt=""
-                className="m-auto h-24 w-24 rounded-full object-cover border-4 border-blue-800"
+                className="m-auto h-40 w-40 rounded-full object-cover border-4 border-blue-400"
               />
               <h5 className="mt-4 text-xl font-semibold">{userData.fullName}</h5>
               <p className="text-gray-800">{userData.address}</p>
@@ -138,8 +138,8 @@ const TutorDash: React.FC = () => {
           <button className="mt-8 bg-indigo-900 text-white w-full py-2 rounded-md mb-4" onClick={toggleProfileModal}>
           My Profile
         </button>
-        <button className="mt-2 bg-indigo-900 text-white w-full py-2 rounded-md mb-4" onClick={() => setShowAcceptedBookingsModal(true)}>Active Bookings</button> {/* New button */}
-          <div className="mt-20">
+        <button className="mt-2 mb-12 bg-indigo-900 text-white w-full py-2 rounded-md mb-4" onClick={() => setShowAcceptedBookingsModal(true)}>Active Bookings</button> {/* New button */}
+          <div className="mt-15">
             <Link
               to="/"
               onClick={handleLogout}

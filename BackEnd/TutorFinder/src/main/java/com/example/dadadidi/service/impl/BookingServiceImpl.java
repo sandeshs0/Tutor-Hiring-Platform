@@ -71,8 +71,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void acceptBooking(Integer bookingId) {
-        // Implement logic to accept the booking with the given bookingId
-        // This method can only be called by authenticated users (tutors)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserEmail = authentication.getName();
         Optional<User> userOptional = userService.getByEmail(currentUserEmail);
@@ -82,7 +80,6 @@ public class BookingServiceImpl implements BookingService {
             Optional<Booking> bookingOptional = bookingRepository.findByIdAndUser(bookingId, user);
             if (bookingOptional.isPresent()) {
                 Booking booking = bookingOptional.get();
-                // Set booking as accepted
                 booking.setAccepted(true);
                 bookingRepository.save(booking);
             } else {
@@ -95,8 +92,6 @@ public class BookingServiceImpl implements BookingService {
 
     @Override
     public void deleteBooking(Integer bookingId) {
-        // Implement logic to delete the booking with the given bookingId
-        // This method can only be called by authenticated users (tutors)
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUserEmail = authentication.getName();
         Optional<User> userOptional = userService.getByEmail(currentUserEmail);

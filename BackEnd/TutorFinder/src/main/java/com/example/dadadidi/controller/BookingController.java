@@ -29,14 +29,12 @@ public class BookingController {
         return new ResponseEntity<>(bookings, HttpStatus.OK);
     }
     @PutMapping("/{bookingId}/accept")
-//    @PreAuthorize("hasRole('TUTOR')") // Ensure only tutors can access this endpoint
     public ResponseEntity<String> acceptBooking(@PathVariable Integer bookingId) {
         bookingService.acceptBooking(bookingId);
         return new ResponseEntity<>("Booking accepted successfully", HttpStatus.OK);
     }
 
     @DeleteMapping("/{bookingId}")
-//    @PreAuthorize("hasRole('TUTOR')") // Ensure only tutors can access this endpoint
     public ResponseEntity<String> deleteBooking(@PathVariable Integer bookingId) {
         bookingService.deleteBooking(bookingId);
         return new ResponseEntity<>("Booking deleted successfully", HttpStatus.OK);

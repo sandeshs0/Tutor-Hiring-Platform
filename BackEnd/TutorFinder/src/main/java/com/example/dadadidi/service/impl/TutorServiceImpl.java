@@ -25,7 +25,6 @@ public class TutorServiceImpl implements TutorService {
                     .orElseThrow(() -> new NoSuchElementException("No Data Found"));
         }
 
-        // Set tutor attributes from TutorPojo
         tutor.setName(tutorPojo.getName());
         tutor.setAddress(tutorPojo.getAddress());
         tutor.setProfilePic(tutorPojo.getProfilePic());
@@ -34,7 +33,6 @@ public class TutorServiceImpl implements TutorService {
         tutor.setYearsOfExp(tutorPojo.getYearsOfExp());
         tutor.setSubjects(tutorPojo.getSubjects());
 
-        // Save or update tutor entity
         tutorRepository.save(tutor);
     }
 
@@ -53,7 +51,6 @@ public class TutorServiceImpl implements TutorService {
         existingTutor.setYearsOfExp(tutorPojo.getYearsOfExp());
         existingTutor.setSubjects(tutorPojo.getSubjects());
 
-        // Save the updated tutor entity
         tutorRepository.save(existingTutor);
     }
 

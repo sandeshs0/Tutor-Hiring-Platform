@@ -9,12 +9,12 @@ interface SortingOptionsProps {
 const SortingOptions: React.FC<SortingOptionsProps> = ({ onSelectSortBy, onSelectSubject }) => {
     const handleSortByClick = (sortBy: string) => {
         onSelectSortBy(sortBy); 
-        console.log("sort fn called") // Ensure this function is called correctly
+        console.log("sort fn called") 
     };
 
  const handleSubjectSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log("filter fn called"+e.target.value);   
-    onSelectSubject(e.target.value); // Call onSelectSubject with the selected subject
+    onSelectSubject(e.target.value); 
     };
 
     return (
